@@ -14,17 +14,24 @@ const duracaoDescansoLongo = 900;
 // Eventos
 btnFoco.addEventListener('click', () => {
   changeContext('foco');
+  btnFoco.classList.toggle('active');
 });
 
 btnCurto.addEventListener('click', () => {
   changeContext('descanso-curto');
+  btnCurto.classList.toggle('active');
 });
 
 btnLongo.addEventListener('click', () => {
   changeContext('descanso-longo');
+  btnLongo.classList.toggle('active');
 });
 
 function changeContext(context) {
+  document.querySelectorAll('.app__card-button').forEach(item => {
+    item.classList.remove('active');
+  });
+  
   html.setAttribute('data-contexto', context);
   appImage.setAttribute('src', `/imagens/${context}.png`);
 
